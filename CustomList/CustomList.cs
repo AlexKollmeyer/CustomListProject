@@ -13,11 +13,30 @@ namespace CustomList
         private int capacity;
         private int count;
 
+        public T[] Items { get; set; }
+
+        public T this[int index]
+        {
+            get
+            {
+                return items[index];
+            }
+            set
+            {
+                items [index] = value;
+            }
+        }
+
+
+        public int Capacity { get; set; }
+        public int Count { get; private set; }
+
+
         //Constructor
         public CustomList()
         {
-            //capacity = 
-            //count =
+            capacity = 4;
+            count = 0;
             //items = 
         }
 
