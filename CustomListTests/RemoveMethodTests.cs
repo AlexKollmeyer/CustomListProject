@@ -32,7 +32,7 @@ namespace CustomListTests
             Assert.AreEqual(1, customList1.Count);
         }
         [TestMethod]
-        public void RemoveMethod_RemoveOneOutOfTwoItemInList_()
+        public void RemoveMethod_RemoveOneOutOfTwoItemInList_ReturnsTrue()
         {
             //Arrange
             CustomList<string> customList1 = new CustomList<string>();
@@ -43,7 +43,7 @@ namespace CustomListTests
             customList1.Remove("e");
 
             //Assert
-            Assert.AreEqual(1, customList1.Count);
+            Assert.AreEqual(true, );
         }
 
     }
