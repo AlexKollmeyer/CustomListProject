@@ -19,11 +19,11 @@ namespace CustomList
         {
             get
             {
-                return items[index];
+                return Items[index];
             }
             set
             {
-                items [index] = value;
+                Items [index] = value;
             }
         }
 
