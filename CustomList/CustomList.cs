@@ -6,14 +6,14 @@ using System.Threading.Tasks;
 
 namespace CustomList
 {
-    public class CustomList<T>
+    public class CustomList<T> : IEnumerable 
     {
+        public IEnumerator GetEnumerator(T item)
+        {
+            foreach()
+        }
         //Member Variables (HAS A)
-        private T[] items;
-        private int capacity;
-        private int count;
-
-        public T[] Items { get; set; }
+        public T[] Items { get ; set; }
 
         public T this[int index]
         {
@@ -27,22 +27,38 @@ namespace CustomList
             }
         }
 
-
         public int Capacity { get; set; }
+        
+        
         public int Count { get; private set; }
 
 
         //Constructor
         public CustomList()
         {
-            capacity = 4;
-            count = 0;
-            //items = 
+            Capacity = 4;
+            Count = 0;
+            Items = new T[Capacity];
         }
 
         //Member Methods (CAN DO)
         public void Add(T item)
         {
+            if (Count < Capacity)
+            {
+                Items[Count] = item;
+                Count++;
+            }
+            else 
+            {
+                Capacity = Capacity * 2;
+                T[] temp = new T[Capacity];
+                Items.CopyTo(temp, 0);
+                Items = temp;
+                Items[Count] = item;
+                Count++;
+
+            }
             //'item' parameter should be added to internal 'items' array
             //if items array is at capacity, double capacity and create new array
             //transfer all items to new array

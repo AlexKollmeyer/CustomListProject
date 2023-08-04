@@ -84,7 +84,7 @@ namespace CustomListTests
 
 
             //Assert
-            Assert.AreEqual("apple", customlist1.Items[1]);
+            Assert.AreEqual("Apple", customlist1.Items[1]);
         }
         [TestMethod]
         public void AddMethod_AddMethod1And5And7And6And12_CapacityDoubles()
