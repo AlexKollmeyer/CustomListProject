@@ -4,14 +4,14 @@
     {
         static void Main(string[] args)
         {
+
             //Arrange
-            CustomList<string> customlist1 = new CustomList<string>();
-
-
+            CustomList<string>  customList1 = new CustomList<string>();
+            customList1.Add("e");
+            customList1.Add("greg");
 
             //Act
-            customlist1.Add("E");
-            customlist1.Add("Apple");
+            customList1.Remove("Apple");
         }
     }
 
