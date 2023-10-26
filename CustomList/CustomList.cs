@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Diagnostics.CodeAnalysis;
 using System.Linq;
+using System.Runtime.CompilerServices;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -53,21 +54,15 @@ namespace CustomList
         //Member Methods (CAN DO)
         public void Add(T item)
         {
-            if (Count < Capacity)
-            {
-                Items[Count] = item;
-                count++;
-            }
-            else 
+            if (Count == Capacity)
             {
                 capacity = Capacity * 2;
                 T[] temp = new T[Capacity];
                 Items.CopyTo(temp, 0);
-                Items = temp;
-                Items[Count] = item;
-                count++;
-
+                items = temp;
             }
+            Items[Count] = item;
+            count++;
             //'item' parameter should be added to internal 'items' array
             //if items array is at capacity, double capacity and create new array
             //transfer all items to new array
@@ -117,20 +112,60 @@ namespace CustomList
 
         public override string ToString()
         {
-            //returns a single string that contains all items from array
-            return "";
+            string tempString = "";
+            for(int i = 0; i<count; i++)
+            {
+                tempString += $"{items[i]}";
+            }
+            return tempString;
         }
 
         public static CustomList<T> operator +(CustomList<T> firstList, CustomList<T> secondList)
         {
-            //returns a single CustomList<T> that contains all items from firstList and all items from secondList 
-            return null;
+            CustomList<T> newList = new CustomList<T>();
+            if (firstList.count != 0) 
+            { 
+                for (int i = 0; i < firstList.count; i++)
+                {
+                    newList.Add(firstList[i]);
+                }
+            }
+            if (secondList.count != 0)
+            {
+                for (int i = 0; i < secondList.count; i++)
+                {
+                    newList.Add(secondList[i]);
+                }
+            }
+            return newList;
         }
 
         public static CustomList<T> operator -(CustomList<T> firstList, CustomList<T> secondList)
         {
-            //returns a single CustomList<T> with all items from firstList, EXCEPT any items that also appear in secondList
-            return null;
+            CustomList<T> newList = new CustomList<T>();
+            
+            if (firstList.count != 0)
+            {
+                for (int i = 0; i < firstList.count; i++)
+                {
+                    newList.Add(firstList[i]);
+                }
+            }
+            if (secondList.count != 0)
+            {
+                for (int x = 0; x < secondList.count; x++)
+                {
+                    for (int j = 0; j < firstList.count; j++)
+                    {
+                        if (firstList[j].Equals(secondList[x]))
+                        {
+                            newList.Remove(firstList[x]);
+                        }
+                    }
+                }
+            }
+            return newList;
+            
         }
 
 
